@@ -6,26 +6,6 @@ import Swal from "sweetalert2";
 const TodoList = () => {
     const [todos, setTodos] = useState([]);
     const navigate = useNavigate();
-    const Logout = () => {
-        axios.post('/logout')
-            .then(response => {
-                Swal.fire({
-                    title: 'Logged Out!',
-                    text: 'You have been logged out successfully.',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                });
-                navigate('/login');
-            })
-            .catch(error => {
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'There was an error logging out. Please try again.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
-            });
-    }
     const DeleteTodo = () => {
         var todoId = event.target.getAttribute('data-id');
         axios.delete(`/todos/${todoId}`)
@@ -87,11 +67,11 @@ const TodoList = () => {
     }, []);
 
     return (
-        <div className="container mt-5">
+        <div className="container mt-5 border p-5">
             <h1 className="center">Todo List</h1>
             <div className="d-flex justify-content-between mt-2">
                 <button className="btn btn-primary">Add Todo</button>
-                <button className="btn btn-primary" onClick={Logout}>Logout</button>
+                <button className="btn btn-primary" onClick={() => navigate('/cats')}>Categories</button>
             </div>
             <div className="table mt-2">
                 <div className="row">
@@ -106,7 +86,7 @@ const TodoList = () => {
                         <div className="col">{todo.description}</div>
                         <div className="col">
                             <button className="btn btn-sm btn-secondary me-2" data-id={todo.id}>Edit</button>
-                            <button className="btn btn-sm btn-danger" data-id={todo.id}>Delete</button>
+                            <button className="btn btn-sm btn-danger" data-id={todo.id} onClick={DeleteTodo}>Delete</button>
                         </div>
                         <div className="col d-flex align-items-center">
                             <input type="checkbox" checked={todo.completed} data-id={todo.id} readOnly />

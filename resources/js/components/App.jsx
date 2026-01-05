@@ -4,6 +4,7 @@ import React from 'react';
 import Login from './pages/Login';
 import Verify from './pages/Verify';
 import TodoList from './pages/TodoList';
+import CategoryList from './pages/CategoryList';
 
 const root = createRoot(document.getElementById('app'));
 root.render(
@@ -13,6 +14,7 @@ root.render(
                 <Route path="/login" element={<Login />} />
                 <Route path="/verify" element={<Verify />} />
                 <Route path="/" element={<TodoList />} />
+                <Route path="/cats" element={<CategoryList />} />
             </Routes>
         </BrowserRouter>
     </React.StrictMode>
