@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import React from 'react';
 import Login from './pages/Login';
 import Verify from './pages/Verify';
+import TodoList from './pages/TodoList';
 
 const root = createRoot(document.getElementById('app'));
 root.render(
@@ -11,6 +12,7 @@ root.render(
             <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route path="/verify" element={<Verify />} />
+                <Route path="/" element={<TodoList />} />
             </Routes>
         </BrowserRouter>
     </React.StrictMode>
