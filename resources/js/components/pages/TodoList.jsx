@@ -27,7 +27,7 @@ const TodoList = () => {
                 });
             });
     }
-    const ToggleTodoStatus = () => {
+    const ToggleTodoStatus = (event) => {
         var todoId = event.target.getAttribute('data-id');
         axios.patch(`/todos/${todoId}`, {
             is_completed: event.target.checked
@@ -49,6 +49,10 @@ const TodoList = () => {
                     confirmButtonText: 'OK'
                 });
             });
+    }
+    const EditTodo = (event) => {
+        var todoId = event.target.getAttribute('data-id');
+        navigate('/edit-todo', { state: { todo_id: todoId } });
     }
 
     useEffect(() => {
@@ -87,11 +91,11 @@ const TodoList = () => {
                         <div className="col">{todo.description}</div>
                         <div className="col">{todo.category ? todo.category.name : ""}</div>
                         <div className="col">
-                            <button className="btn btn-sm btn-secondary me-2" data-id={todo.id}>Edit</button>
+                            <button className="btn btn-sm btn-secondary me-2" data-id={todo.id} onClick={EditTodo}>Edit</button>
                             <button className="btn btn-sm btn-danger" data-id={todo.id} onClick={DeleteTodo}>Delete</button>
                         </div>
                         <div className="col d-flex align-items-center">
-                            <input type="checkbox" checked={todo.completed} data-id={todo.id} readOnly />
+                            <input type="checkbox" checked={todo.completed} data-id={todo.id} onChange={ToggleTodoStatus} readOnly />
                         </div>
                     </div>
                 ))}

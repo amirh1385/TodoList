@@ -9,6 +9,7 @@ import CreateTodo from './pages/CreateTodo';
 import CreateCategory from './pages/CreateCategory';
 import axios from 'axios';
 import EditCategory from './pages/EditCategory';
+import EditTodo from './pages/EditTodo';
 
 axios.interceptors.response.use(
     response => response,
@@ -33,6 +34,7 @@ root.render(
                 <Route path="/create-todo" element={<CreateTodo />} />
                 <Route path='/create-category' element={<CreateCategory />} />
                 <Route path='/edit-category' element={<EditCategory />} />
+                <Route path='/edit-todo' element={<EditTodo />} />
             </Routes>
         </BrowserRouter>
     </React.StrictMode>

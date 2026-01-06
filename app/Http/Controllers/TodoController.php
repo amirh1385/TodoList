@@ -49,6 +49,13 @@ class TodoController extends Controller
 
         return response()->json(['message' => 'Todo created successfully.', 'todo' => $todo], 201);
     }
+
+    public function show(Request $request, Todo $todo){
+        if($todo->user_id == Auth::user()->id){
+            return $todo->only(['id', 'title', 'description', 'is_completed', 'category_id']);
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      */
