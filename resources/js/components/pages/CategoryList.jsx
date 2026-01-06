@@ -27,6 +27,10 @@ const CategoryList = () => {
                 });
             });
     }
+    const EditCategory = (event) => {
+        var categoryId = event.target.getAttribute('data-id');
+        navigate('/edit-category', { state: { category_id: categoryId } });
+    }
 
     useEffect(() => {
         axios.get('/categories')
@@ -59,7 +63,7 @@ const CategoryList = () => {
                     <div className="row" key={category.id}>
                         <div className="col">{category.name}</div>
                         <div className="col">
-                            <button className="btn btn-sm btn-secondary me-2" data-id={category.id}>Edit</button>
+                            <button className="btn btn-sm btn-secondary me-2" data-id={category.id} onClick={EditCategory}>Edit</button>
                             <button className="btn btn-sm btn-danger" data-id={category.id} onClick={DeleteCategory}>Delete</button>
                         </div>
                     </div>

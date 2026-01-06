@@ -82,7 +82,7 @@ const TodoList = () => {
                     <div className="col font-weight-bold p-3">Status</div>
                 </div>
                 {todos.map((todo) => (
-                    <div className="row" key={todo.id}>
+                    <div className="row mt-3" key={todo.id}>
                         <div className="col">{todo.title}</div>
                         <div className="col">{todo.description}</div>
                         <div className="col">{todo.category ? todo.category.name : ""}</div>

@@ -42,6 +42,12 @@ class CategoryController extends Controller
 
         return response()->json(['message' => 'Category created successfully.', 'category' => $category], 201);
     }
+    
+    public function show(Request $request, Category $category){
+        if($category->user_id == Auth::user()->id){
+            return $category->only(['id', 'name']);
+        }
+    }
 
     /**
      * Update the specified resource in storage.
