@@ -54,6 +54,21 @@ const TodoList = () => {
         var todoId = event.target.getAttribute('data-id');
         navigate('/edit-todo', { state: { todo_id: todoId } });
     }
+    const Logout = (event) => {
+        axios.post('/logout')
+            .then(response => {
+                localStorage.removeItem('auth_status');
+                navigate('/login');
+            })
+            .catch(error => {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'There was an error logging out. Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            });
+    }
 
     useEffect(() => {
         axios.get('/todos')
@@ -72,6 +87,9 @@ const TodoList = () => {
 
     return (
         <div className="container mt-5 border p-5">
+            <div className="d-flex justify-content-end">
+                <button className="btn btn-primary" onClick={Logout}>Logout</button>
+            </div>
             <h1 className="center">Todo List</h1>
             <div className="d-flex justify-content-between mt-2">
                 <Link className="btn btn-primary" to="/create-todo">Add Todo</Link>

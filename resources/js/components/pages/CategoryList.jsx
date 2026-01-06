@@ -31,6 +31,21 @@ const CategoryList = () => {
         var categoryId = event.target.getAttribute('data-id');
         navigate('/edit-category', { state: { category_id: categoryId } });
     }
+    const Logout = (event) => {
+        axios.post('/logout')
+            .then(response => {
+                localStorage.removeItem('auth_status');
+                navigate('/login');
+            })
+            .catch(error => {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'There was an error logging out. Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            });
+    }
 
     useEffect(() => {
         axios.get('/categories')
@@ -49,6 +64,9 @@ const CategoryList = () => {
 
     return (
         <div className="container mt-5 border p-5">
+            <div className="d-flex justify-content-end">
+                <button className="btn btn-primary" onClick={Logout}>Logout</button>
+            </div>
             <h1 className="center">Category List</h1>
             <div className="d-flex justify-content-between mt-2">
                 <Link className="btn btn-primary" to="/create-category">Add Category</Link>
