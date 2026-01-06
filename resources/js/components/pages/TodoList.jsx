@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -70,13 +70,14 @@ const TodoList = () => {
         <div className="container mt-5 border p-5">
             <h1 className="center">Todo List</h1>
             <div className="d-flex justify-content-between mt-2">
-                <button className="btn btn-primary">Add Todo</button>
+                <Link className="btn btn-primary" to="/create-todo">Add Todo</Link>
                 <button className="btn btn-primary" onClick={() => navigate('/cats')}>Categories</button>
             </div>
             <div className="table mt-2">
                 <div className="row">
                     <div className="col font-weight-bold p-3">Title</div>
                     <div className="col font-weight-bold p-3">Description</div>
+                    <div className="col font-weight-bold p-3">Category</div>
                     <div className="col font-weight-bold p-3">Actions</div>
                     <div className="col font-weight-bold p-3">Status</div>
                 </div>
@@ -84,6 +85,7 @@ const TodoList = () => {
                     <div className="row" key={todo.id}>
                         <div className="col">{todo.title}</div>
                         <div className="col">{todo.description}</div>
+                        <div className="col">{todo.category}</div>
                         <div className="col">
                             <button className="btn btn-sm btn-secondary me-2" data-id={todo.id}>Edit</button>
                             <button className="btn btn-sm btn-danger" data-id={todo.id} onClick={DeleteTodo}>Delete</button>

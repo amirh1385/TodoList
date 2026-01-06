@@ -17,6 +17,7 @@ const Verify = () => {
                 icon: 'success',
                 confirmButtonText: 'OK'
             });
+            navigate('/');
         }).catch(error => {
             Swal.fire({
                 title: 'Error!',
