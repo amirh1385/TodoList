@@ -85,7 +85,7 @@ const TodoList = () => {
                     <div className="row" key={todo.id}>
                         <div className="col">{todo.title}</div>
                         <div className="col">{todo.description}</div>
-                        <div className="col">{todo.category}</div>
+                        <div className="col">{todo.category ? todo.category.name : ""}</div>
                         <div className="col">
                             <button className="btn btn-sm btn-secondary me-2" data-id={todo.id}>Edit</button>
                             <button className="btn btn-sm btn-danger" data-id={todo.id} onClick={DeleteTodo}>Delete</button>

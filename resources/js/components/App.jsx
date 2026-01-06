@@ -6,12 +6,14 @@ import Verify from './pages/Verify';
 import TodoList from './pages/TodoList';
 import CategoryList from './pages/CategoryList';
 import CreateTodo from './pages/CreateTodo';
+import CreateCategory from './pages/CreateCategory';
 import axios from 'axios';
 
 axios.interceptors.response.use(
     response => response,
     error => {
         if (error.response && error.response.status === 401) {
+            localStorage.removeItem('auth_status');
             window.location.href = '/login';
         }
         return Promise.reject(error);
@@ -28,6 +30,7 @@ root.render(
                 <Route path="/" element={<TodoList />} />
                 <Route path="/cats" element={<CategoryList />} />
                 <Route path="/create-todo" element={<CreateTodo />} />
+                <Route path='/create-category' element={<CreateCategory />} />
             </Routes>
         </BrowserRouter>
     </React.StrictMode>

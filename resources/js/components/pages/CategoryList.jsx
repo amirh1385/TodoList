@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -47,7 +47,7 @@ const CategoryList = () => {
         <div className="container mt-5 border p-5">
             <h1 className="center">Category List</h1>
             <div className="d-flex justify-content-between mt-2">
-                <button className="btn btn-primary">Add Category</button>
+                <Link className="btn btn-primary" to="/create-category">Add Category</Link>
                 <button className="btn btn-primary" onClick={() => navigate('/')}>Todos</button>
             </div>
             <div className="table mt-2">

@@ -11,6 +11,7 @@ const Verify = () => {
             phone: phone,
             code: code
         }).then(response => {
+            localStorage.setItem('auth_status', 'true');
             Swal.fire({
                 title: 'Verified!',
                 text: 'Your OTP has been verified successfully.',

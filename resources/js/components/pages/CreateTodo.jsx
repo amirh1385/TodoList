@@ -45,6 +45,10 @@ const CreateTodo = () => {
                     text: error.response ? error.response.data.message : error.message,
                 });
             });
+
+        if (localStorage.getItem('auth_status') === null) {
+            navigate('/login');
+        }
     }, []);
 
     return (
